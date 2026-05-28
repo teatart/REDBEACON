@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initCarousel();
   initForm();
   initCopyrightYear();
+  initThemeToggle();
+  initWhatsAppFloat();
 });
 
 /* ----------------------------------------------------------
@@ -351,10 +353,52 @@ function clearMessage() {
 }
 
 /* ----------------------------------------------------------
+   THEME TOGGLE
+   Reads saved preference from localStorage (falling back to
+   prefers-color-scheme), sets data-theme on <html>, and
+   swaps the icon on each click.
+   ---------------------------------------------------------- */
+function initThemeToggle() {
+  const btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  const icon = btn.querySelector('.theme-icon');
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+    localStorage.setItem('theme', theme);
+  }
+
+  const saved = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  applyTheme(saved || (prefersDark ? 'dark' : 'light'));
+
+  btn.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+  });
+}
+
+/* ----------------------------------------------------------
    COPYRIGHT YEAR
    Keeps the footer year automatically current.
    ---------------------------------------------------------- */
 function initCopyrightYear() {
   const el = document.getElementById('copyrightYear');
   if (el) el.textContent = new Date().getFullYear();
+}
+
+/* ----------------------------------------------------------
+   WHATSAPP FLOAT BUTTON
+   Shows the fixed bottom-left WhatsApp chat button after a
+   2-second delay by adding the .wa-visible class, which
+   transitions opacity from 0 to 1.
+   ---------------------------------------------------------- */
+function initWhatsAppFloat() {
+  const btn = document.getElementById('whatsapp-float');
+  if (!btn) return;
+
+  setTimeout(() => {
+    btn.classList.add('wa-visible');
+  }, 2000);
 }

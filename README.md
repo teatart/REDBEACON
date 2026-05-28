@@ -18,7 +18,7 @@ A one-page marketing website for **Red Beacon Asset Management** — a fictional
 |---|---|
 | `index.html` | All markup and content |
 | `styles.css` | All styling — Disney Magic Edition with CSS custom properties |
-| `script.js` | All interactivity (carousel, counters, fade-ins, form) |
+| `script.js` | All interactivity (carousel, counters, fade-ins, form, WhatsApp float) |
 | `playwright-fill-form.js` | Playwright script to auto-fill and submit the enquiry form |
 | `package.json` | Node.js dependencies (Playwright) |
 
@@ -69,6 +69,15 @@ node playwright-fill-form.js
 This opens a browser, navigates to the live site, fills in the enquiry form, and submits it. The submission is sent via FormSubmit.co to `tracey.tay@redbeaconam.com`.
 
 > **Note:** FormSubmit.co requires the form to be submitted from a real domain (not `file://`). The script targets the live GitHub Pages URL. On first use, FormSubmit will send an activation email to confirm the endpoint before forwarding submissions.
+
+## WhatsApp Float Button
+
+A floating chat button appears in the **bottom-left corner** after a 2-second delay. It links directly to WhatsApp via `wa.me` with a pre-filled message.
+
+- **Number**: +601154113445
+- **Icon**: Official WhatsApp SVG (white on `#25D366` green)
+- **Features**: Pulse ring animation, hover tooltip, fade-in on load, `prefers-reduced-motion` support
+- To change the number or message, update the `href` on `#whatsapp-float__link` in `index.html`
 
 ## Deployment
 
