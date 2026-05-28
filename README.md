@@ -36,6 +36,16 @@ All colours and fonts live as CSS custom properties in `styles.css `:root`:
 | `--font-heading` | Cinzel | Display font — regal serif |
 | `--font-body` | Raleway | Body copy |
 
+## Features
+
+- Responsive one-page layout with sticky nav and hamburger menu
+- Scroll-triggered fade-in animations via IntersectionObserver
+- Auto-incrementing stat counters
+- Testimonial carousel
+- Contact form via FormSubmit.co (no backend)
+- WhatsApp floating chat button
+- **Dark / Light theme toggle** — persists via `localStorage`, respects `prefers-color-scheme` on first visit
+
 ## Running Locally
 
 Open `index.html` directly in a browser:
