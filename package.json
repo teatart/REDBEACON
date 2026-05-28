@@ -1,0 +1,11 @@
+{
+  "name": "redbeacon-playwright",
+  "version": "1.0.0",
+  "description": "Playwright script to fill and submit the Red Beacon enquiry form",
+  "scripts": {
+    "fill-form": "node playwright-fill-form.js"
+  },
+  "dependencies": {
+    "playwright": "^1.52.0"
+  }
+}
